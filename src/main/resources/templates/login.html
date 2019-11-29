@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentification !!</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<form action="/connexion">
+    <label>Identifiant: </label>
+    <div><input name="login" type="text"></div>
+
+    <label>Mot de passe: </label>
+    <div><input name="password" type="password"></div>
+    <div>
+        <input type="submit" value="Connexion">
+    </div>
+
+</form>
+</body>
+</html>
