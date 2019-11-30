@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscrire un &eacute;el&egrave; !!</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <H1>Inscrire un &eacute;l&egrave;ve
+        <hr>
+    </H1>
+    <div class="alert alert-info" role="alert">
+        Veuillez remplir le formulaire suivant
+    </div>
+    <form action="/connexion" method="POST">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="annee">Choisir une ann&eacute;e </label>
+            </div>
+            <select class="custom-select" id="annee">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="annee">Choisir une &eacute;cole</label>
+            </div>
+            <select class="custom-select" id="ecole">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="annee">Choisir une classe</label>
+            </div>
+            <select class="custom-select" id="classe">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="prenom"> Pr&eacute;nom</label>
+            <input type="text" class="form-control" id="prenom"
+                   placeholder="prenom" name="prenom" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="nom"> Nom</label>
+            <input type="text" class="form-control" id="nom"
+                   placeholder="nom" name="nom" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="dateDeNaissance"> Date de naissance</label>
+            <input type="date" class="form-control" id="dateDeNaissance"
+                   placeholder="24/02/2011" name="dateDeNaissance" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="lieuDeNaissance"> Lieu de naissance</label>
+            <input type="text" class="form-control" id="lieuDeNaissance"
+                   placeholder="lieu de Naissance" name="lieuDeNaissance" required="required">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+    </form>
+
+</div>
+</body>
+</html>

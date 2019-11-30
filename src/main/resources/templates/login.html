@@ -6,16 +6,28 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <body>
-<form action="/connexion">
-    <label>Identifiant: </label>
-    <div><input name="login" type="text"></div>
-
-    <label>Mot de passe: </label>
-    <div><input name="password" type="password"></div>
-    <div>
-        <input type="submit" value="Connexion">
+<div class="container">
+    <H1>&nbsp;</H1>
+    <div class="alert alert-info" role="alert">
+        Veuillez-vous identifier
     </div>
+    <form action="/connexion" method="POST">
+        <div class="form-group">
+            <label for="formGroupExampleInput"> Nom d&apos;utilisateur: </label>
+            <input type="text" class="form-control" id="formGroupExampleInput"
+                   placeholder="Username" name="login" required="required">
+        </div>
 
-</form>
+        <div class="form-group">
+            <label for="formGroupExampleInput2"> Mot de passe : </label>
+            <input type="password" class="form-control" id="formGroupExampleInput2"
+                   placeholder="Mot de passe" name="password" required="required">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Connexion</button>
+
+    </form>
+
+</div>
 </body>
 </html>
