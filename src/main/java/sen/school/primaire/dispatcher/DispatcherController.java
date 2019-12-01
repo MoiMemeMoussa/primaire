@@ -2,43 +2,41 @@ package sen.school.primaire.dispatcher;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class DispatcherController {
 
-    //creer annee scolaire
+
+    RestTemplate restTemplate = new RestTemplate();
+
     @GetMapping("/annee/create")
-    public String creerAnneeScolaire(){
+    public String creerAnneeScolaire() {
         return "addAnnee";
     }
 
-    // creer une école
     @GetMapping("/ecole/create")
-    public String creerEcole(){
+    public String creerEcole() {
         return "addEcole";
     }
 
-    //ajouter une classe dans une école pour une année scolaire donnée
     @GetMapping("/classe/create")
-    public String addClasse(){
+    public String addClasse() {
         return "addClasse";
     }
 
-    //creer une matiere
     @GetMapping("/matiere/create")
-    public String addMatiere(){
+    public String addMatiere() {
         return "addMatiere";
     }
 
-    //affecter un coefficient à une matiere
     @GetMapping("/matiere/coefficient")
-    public String addCoefficient(){
+    public String addCoefficient() {
         return "addCoefficient";
     }
 
-    //inscrire un eleve
     @GetMapping("/eleve/create")
-    public String inscrireEleve(){
+    public String inscrireEleve() {
         return "addEleve";
     }
 }

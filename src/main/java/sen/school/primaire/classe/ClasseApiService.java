@@ -21,5 +21,8 @@ public class ClasseApiService {
 
     }
 
+    public Classe save(Classe classe){
+        return classeRepositoryService.save(classe);
+    }
 
 }

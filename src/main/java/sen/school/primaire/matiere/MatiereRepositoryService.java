@@ -26,5 +26,7 @@ public class MatiereRepositoryService {
         return matiereRepository.findAll();
     }
 
-
+    void  delete(Matiere matiere) {
+         matiereRepository.delete(matiere);
+    }
 }

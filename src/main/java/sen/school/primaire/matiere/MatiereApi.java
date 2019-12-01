@@ -1,5 +1,6 @@
 package sen.school.primaire.matiere;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,50 +12,51 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/matiere")
 @Slf4j
 public class MatiereApi {
 
     @Autowired
-    MatiereApiService matiereApiService;
+    MatiereRepositoryService matiereRepositoryService;
 
 
-    //Save new matiere
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Matiere> save(  @RequestParam(value = "name") String name) {
-        Matiere matiere = new Matiere();
-        if(!StringUtils.isEmpty(name)){
-            matiere.setName(name);
+    @ApiOperation(" create matiere")
+    @RequestMapping(value = "/matieres", method = RequestMethod.POST)
+    public ResponseEntity<Matiere> save(@RequestBody Matiere matiere) {
+        matiereRepositoryService.save(matiere);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
+
+    @ApiOperation(value = "Retrieve all matieres")
+    @RequestMapping(value = "/matieres", method = RequestMethod.GET)
+    public List<Matiere> findAll() {
+        log.info("Find all matieres");
+        return matiereRepositoryService.findAll();
+    }
+
+
+    @ApiOperation(" find matiere by id")
+    @RequestMapping(value = "/matieres/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<Matiere>> find(@PathVariable(value = "id") Long id) {
+        Optional<Matiere> matiere = matiereRepositoryService.findById(id);
+        if(StringUtils.isEmpty(matiere)){
+            return new ResponseEntity<>(matiere, HttpStatus.NOT_FOUND);
+        } else{
+            return new ResponseEntity<>(matiere, HttpStatus.FOUND);
         }
-        return new ResponseEntity<>(
-                matiereApiService.save(matiere),
-                HttpStatus.CREATED);
-
     }
 
-    //Get matiere by id
-    @RequestMapping(value = "/{idMatiere}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Matiere>> findById(
-            @PathVariable(value = "idMatiere") Long idMatiere) {
-        if (idMatiere == null)
-            return new ResponseEntity<Optional<Matiere>>(
-                    matiereApiService.findById(idMatiere),
+    @ApiOperation(value = "Delete a matire")
+    @RequestMapping(value = "/matieres/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteMatiere(@PathVariable(value = "id") Long id) {
+        log.info("Delete matiere with id = [{}]", id);
+        Optional<Matiere> matiere = matiereRepositoryService.findById(id);
+        if (matiere == null) {
+            return new ResponseEntity("There is no matiere with ID " + id,
                     HttpStatus.NOT_FOUND);
-        else
-            return new ResponseEntity<Optional<Matiere>>(
-                    matiereApiService.findById(idMatiere),
-                    HttpStatus.FOUND);
+        }
+        matiereRepositoryService.delete(matiere.get());
+        return new ResponseEntity(matiere, HttpStatus.OK);
     }
-
-    //Get all matiere
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<List<Matiere>> findAll(
-    ) {
-        return new ResponseEntity<>(
-                matiereApiService.findAll(),
-                HttpStatus.OK);
-
-    }
-
 
 }
