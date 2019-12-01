@@ -4,16 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/matieres")
+@RequestMapping(value = "/matiere")
 @Slf4j
 public class MatiereApi {
 
@@ -23,7 +21,11 @@ public class MatiereApi {
 
     //Save new matiere
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Matiere> save(@PathVariable Matiere matiere) {
+    public ResponseEntity<Matiere> save(  @RequestParam(value = "name") String name) {
+        Matiere matiere = new Matiere();
+        if(!StringUtils.isEmpty(name)){
+            matiere.setName(name);
+        }
         return new ResponseEntity<>(
                 matiereApiService.save(matiere),
                 HttpStatus.CREATED);

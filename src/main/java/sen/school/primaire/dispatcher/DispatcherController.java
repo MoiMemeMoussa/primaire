@@ -1,10 +1,10 @@
-package sen.school.primaire.Interface;
+package sen.school.primaire.dispatcher;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class InterfaceController {
+public class DispatcherController {
 
     //creer annee scolaire
     @GetMapping("/annee/create")

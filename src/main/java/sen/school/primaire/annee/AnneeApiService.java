@@ -2,6 +2,7 @@ package sen.school.primaire.annee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import sen.school.primaire.matiere.Matiere;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,5 +22,8 @@ public class AnneeApiService {
 
     }
 
+    public Annee save(Annee annee) {
+        return anneeRepositoryService.save(annee);
+    }
 
 }

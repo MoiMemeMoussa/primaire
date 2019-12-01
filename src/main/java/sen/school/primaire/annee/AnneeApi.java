@@ -4,10 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import sen.school.primaire.matiere.Matiere;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +38,19 @@ public class AnneeApi {
         return new ResponseEntity<>(
                 anneeApiService.findAll(),
                 HttpStatus.OK);
+
+    }
+
+    //Save new annee scolaire
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<Annee> save(@RequestParam(value = "value") String value) {
+        Annee annee = new Annee();
+        if(!StringUtils.isEmpty(value)){
+            annee.setValue(value);
+        }
+        return new ResponseEntity<>(
+                anneeApiService.save(annee),
+                HttpStatus.CREATED);
 
     }
 
