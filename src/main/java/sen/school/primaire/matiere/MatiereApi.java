@@ -22,6 +22,7 @@ public class MatiereApi {
     @ApiOperation(" create matiere")
     @RequestMapping(value = "/matieres", method = RequestMethod.POST)
     public ResponseEntity<Matiere> save(@RequestBody Matiere matiere) {
+        log.info("Create MAtiere [{}]" + matiere);
         matiereRepositoryService.save(matiere);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
@@ -46,7 +47,7 @@ public class MatiereApi {
         }
     }
 
-    @ApiOperation(value = "Delete a matire")
+    @ApiOperation(value = "Delete a matiere")
     @RequestMapping(value = "/matieres/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteMatiere(@PathVariable(value = "id") Long id) {
         log.info("Delete matiere with id = [{}]", id);

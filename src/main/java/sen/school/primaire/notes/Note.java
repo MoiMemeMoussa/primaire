@@ -1,7 +1,6 @@
 package sen.school.primaire.notes;
 
 import lombok.*;
-import sen.school.primaire.anneeecoleclassematiere.ClasseMatiereKey;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

@@ -1,9 +1,10 @@
-package sen.school.primaire.anneeecoleclasse;
+package sen.school.primaire.anneeecoleclasseenseignant;
 
 import lombok.*;
 import sen.school.primaire.annee.Annee;
 import sen.school.primaire.classe.Classe;
 import sen.school.primaire.ecole.Ecole;
+import sen.school.primaire.enseignant.Enseignant;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -16,12 +17,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Embeddable
-public class AnneeEcoleClasseKey implements Serializable {
+public class AnneeEcoleClasseEnseignantKey implements Serializable {
 
 
     @ManyToOne
     @JoinColumn(name = "idAnnee")
-    private Annee annee;
+    private Annee anne;
 
     @ManyToOne
     @JoinColumn(name = "idEcole")
@@ -30,4 +31,8 @@ public class AnneeEcoleClasseKey implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idClasse")
     private Classe classe;
+
+    @ManyToOne
+    @JoinColumn(name = "matricule")
+    private Enseignant enseignant;
 }

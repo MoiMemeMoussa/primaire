@@ -2,6 +2,7 @@ package sen.school.primaire.ecole;
 
 import lombok.*;
 import sen.school.primaire.annee.Annee;
+import sen.school.primaire.anneeecole.AnneeEcole;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,7 +24,13 @@ public class Ecole {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "anneeEcole")
-    private Set<Annee> ecoleEcole = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "anneeEcole")
+    private Set<Annee> ecoleAnnee = new HashSet<>();
 
 }

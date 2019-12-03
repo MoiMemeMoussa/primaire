@@ -17,37 +17,54 @@ import java.util.Optional;
 public class ClasseApi {
 
     @Autowired
-    ClasseApiService classeApiService;
+    ClasseRepositoryService classeRepositoryService;
+
+    @ApiOperation("create classe")
+    @RequestMapping(value = "/classe", method = RequestMethod.POST)
+    public ResponseEntity<Classe> save(@RequestBody Classe classe) {
+        log.info("Create Classe [{}]" + classe);
+        classeRepositoryService.save(classe);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
 
     @ApiOperation((" find classe by id"))
     @RequestMapping(value = "/classes/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Classe>> findById(@PathVariable(value = "id") Long id) {
+        log.info("Find  classe  with id = [{}]", id);
         if (id == null)
             return new ResponseEntity<>(
-                    classeApiService.findById(id),
+                    classeRepositoryService.findById(id),
                     HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(
-                    classeApiService.findById(id),
+                    classeRepositoryService.findById(id),
                     HttpStatus.FOUND);
     }
 
     @ApiOperation((" find all classes"))
     @RequestMapping(value = "/classes", method = RequestMethod.GET)
     public ResponseEntity<List<Classe>> findAll() {
+        log.info("Find all classes");
         return new ResponseEntity<>(
-                classeApiService.findAll(),
+                classeRepositoryService.findAll(),
                 HttpStatus.OK);
     }
 
-    @ApiOperation("create classe")
-    @RequestMapping(value = "/classes", method = RequestMethod.POST)
-    public ResponseEntity<Classe> save(@RequestBody Classe classe) {
-        log.info("Create Classe [{}]" + classe);
-        classeApiService.save(classe);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-
+    @ApiOperation(value = "Delete classe")
+    @RequestMapping(value = "/classe/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteClasse(@PathVariable(value = "id") Long id) {
+        log.info("Delete annee with id = [{}]", id);
+        Optional<Classe> classe = classeRepositoryService.findById(id);
+        if (classe == null) {
+            return new ResponseEntity("There is no classe with ID " + id,
+                    HttpStatus.NOT_FOUND);
+        }
+        classeRepositoryService.delete(classe.get());
+        return new ResponseEntity(classe, HttpStatus.OK);
     }
+
+
 
 
 }

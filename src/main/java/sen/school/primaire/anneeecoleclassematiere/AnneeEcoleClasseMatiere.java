@@ -1,7 +1,6 @@
 package sen.school.primaire.anneeecoleclassematiere;
 
 import lombok.*;
-import sen.school.primaire.anneeecoleclasseenseignant.ClasseEnseignantKey;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -15,10 +14,10 @@ import javax.persistence.UniqueConstraint;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class ClasseMatiere {
+public class AnneeEcoleClasseMatiere {
 
     @EmbeddedId
-    ClasseMatiereKey classeEnseignantKey;
+    AnneeEcoleClasseMatiereKey classeEnseignantKey;
 
 
 }

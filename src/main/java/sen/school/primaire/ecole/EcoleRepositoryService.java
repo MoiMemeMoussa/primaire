@@ -14,7 +14,7 @@ public class EcoleRepositoryService {
     @Autowired
     EcoleRepository ecoleRepository;
 
-    Optional<Ecole> findById(int id) {
+    Optional<Ecole> findById(Long id) {
         return ecoleRepository.findById(id);
     }
 
@@ -26,5 +26,7 @@ public class EcoleRepositoryService {
         return ecoleRepository.save(ecole);
     }
 
-
+   void delete(Ecole ecole){
+        ecoleRepository.delete(ecole);
+   }
 }

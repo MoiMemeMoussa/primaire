@@ -14,7 +14,7 @@ public class EleveRepositoryService {
     @Autowired
     EleveRepository eleveRepository;
 
-    Optional<Eleve> findById(int id) {
+    Optional<Eleve> findById(Long id) {
         return eleveRepository.findById(id);
     }
 
@@ -22,5 +22,12 @@ public class EleveRepositoryService {
         return eleveRepository.findAll();
     }
 
+    void delete(Eleve eleve){
+        eleveRepository.delete(eleve);
+    }
+
+    Eleve save(Eleve annee) {
+        return eleveRepository.save(annee);
+    }
 
 }

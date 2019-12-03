@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Embeddable
-public class ClasseMatiereKey implements Serializable {
+public class AnneeEcoleClasseMatiereKey implements Serializable {
 
 
     private Long idAnnee;

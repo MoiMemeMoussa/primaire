@@ -13,7 +13,7 @@ public class AnneeApiService {
     @Autowired
     AnneeRepositoryService anneeRepositoryService;
 
-    public Optional<Annee> findById(int id) {
+    public Optional<Annee> findById(Long id) {
         return anneeRepositoryService.findById(id);
     }
 

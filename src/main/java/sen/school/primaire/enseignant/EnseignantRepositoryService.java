@@ -22,5 +22,11 @@ public class EnseignantRepositoryService {
         return enseignantRepository.findAll();
     }
 
+    void delete(Enseignant enseignant){
+        enseignantRepository.delete(enseignant);
+    }
 
+    Enseignant save(Enseignant enseignant) {
+        return enseignantRepository.save(enseignant);
+    }
 }

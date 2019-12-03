@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class NoteApi {
 
     @Autowired
-    NoteApiService noteApiService;
+    NoteRepositoryService noteRepositoryService;
 
     //Save new matiere
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Note> save(@PathVariable Note note) {
         return new ResponseEntity<>(
-                noteApiService.save(note),
+                noteRepositoryService.save(note),
                 HttpStatus.CREATED);
 
     }

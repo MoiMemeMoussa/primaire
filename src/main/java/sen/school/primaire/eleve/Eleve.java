@@ -20,8 +20,8 @@ public class Eleve {
     @Column(name = "firstName", nullable = false)
     private String firstName;
 
-    @Column(name = "laststName", nullable = false)
-    private String lasttName;
+    @Column(name = "lasttName", nullable = false)
+    private String lastName;
 
     @Column(name = "birthDate", nullable = false)
     private String birthDate;
@@ -31,5 +31,6 @@ public class Eleve {
 
     @Column(name = "contact", nullable = false)
     private String contact;
+
 
 }

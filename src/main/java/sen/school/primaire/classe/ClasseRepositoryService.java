@@ -14,8 +14,8 @@ public class ClasseRepositoryService {
     @Autowired
     ClasseRepository classeRepository;
 
-    Optional<Classe> findById(Long idClasse) {
-        return classeRepository.findById(idClasse);
+    Optional<Classe> findById(Long id) {
+        return classeRepository.findById(id);
     }
 
     List<Classe> findAll() {
@@ -25,6 +25,8 @@ public class ClasseRepositoryService {
     Classe save(Classe classe) {
         return classeRepository.save(classe);
     }
-
+    void delete(Classe classe){
+        classeRepository.delete(classe);
+    }
 
 }

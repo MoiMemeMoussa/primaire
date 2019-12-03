@@ -14,7 +14,7 @@ public class AnneeRepositoryService {
     @Autowired
     AnneeRepository anneeRepository;
 
-    Optional<Annee> findById(int id) {
+    Optional<Annee> findById(Long id) {
         return anneeRepository.findById(id);
     }
 
@@ -26,5 +26,7 @@ public class AnneeRepositoryService {
         return anneeRepository.save(annee);
     }
 
-
+    void delete(Annee annee){
+         anneeRepository.delete(annee);
+    }
 }
