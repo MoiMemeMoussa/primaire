@@ -1,33 +1,33 @@
 package sen.school.primaire.classe;
 
-import lombok.*;
-import sen.school.primaire.anneeecole.AnneeEcole;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import sen.school.primaire.annee.Annee;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table(name = "classe", uniqueConstraints = @UniqueConstraint(columnNames = {"idClasse"}, name = "idClasse"))
+@Table(name = "classe")
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 public class Classe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idClasse", nullable = false)
-    private Long idClasse;
+    @Column(name = "idClasse")
+    private int idClasse;
 
-    @Column(name = "value", nullable = false)
-    private String value;
+    @Column(name = "name",nullable = false)
+    private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "anneeEcoleClasse")
-    private Set<AnneeEcole> classeAnneeEcole = new HashSet<>();
+    @ManyToMany(mappedBy = "existeClasse")
+    private Set<Annee> annee = new HashSet<>();
+
+
 }

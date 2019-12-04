@@ -1,40 +1,33 @@
 package sen.school.primaire.annee;
 
-import lombok.*;
-import sen.school.primaire.anneeecole.AnneeEcole;
-import sen.school.primaire.ecole.Ecole;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import sen.school.primaire.classe.Classe;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-@Table(name = "annee", uniqueConstraints = @UniqueConstraint(columnNames = {"idAnnee"}, name = "idAnnee"))
+@Table(name = "annee")
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 public class Annee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idAnnee", nullable = false)
-    private Long idAnnee;
+    @Column(name = "idAnnee")
+    private int idAnnee;
 
-    @Column(name = "value", nullable = false)
+    @Column(name = "value")
     private String value;
 
-
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "annee_ecole",
-            joinColumns = { @JoinColumn(name = "annee_id",referencedColumnName = "idAnnee") },
-            inverseJoinColumns = { @JoinColumn(name = "ecole_id",referencedColumnName = "idEcole") })
-    private Set<Ecole> anneeEcole = new HashSet<>();
-
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "classe_annee",
+            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
+            inverseJoinColumns = @JoinColumn(name = "idClasse", referencedColumnName = "idClasse"))
+    private Set<Classe> existeClasse;
 }

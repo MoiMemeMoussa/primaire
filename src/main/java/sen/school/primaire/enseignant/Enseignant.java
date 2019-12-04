@@ -1,40 +1,40 @@
 package sen.school.primaire.enseignant;
 
-import lombok.*;
-import sen.school.primaire.anneeecoleclasse.AnneeEcoleClasse;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import sen.school.primaire.anneescolaire.ClasseAnnee;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table(name = "enseignant", uniqueConstraints = @UniqueConstraint(columnNames = {"matricule"}, name = "matricule"))
+@Table(name = "enseignant")
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 public class Enseignant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "matricule", nullable = false)
-    private String matricule;
+    @Column(name = "matricule")
+    private int matricule;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstName",nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
-    private String lasttName;
+    @Column(name = "lastName",nullable = false)
+    private String lastName;
 
-    @Column(name = "phone", nullable = false)
-    private String phone;
+    @Column(name = "gender",nullable = false)
+    private char gender;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "anneeEcoleClasseEnseignant")
-    private Set<AnneeEcoleClasse> enseignantAnneeEcoleClasse = new HashSet<>();
+    @Column(name = "phone",nullable = false)
+    private char phone;
 
+    @ManyToMany(mappedBy = "sontEnseignant")
+    private Set<ClasseAnnee> classeAnnees = new HashSet<>();
 }

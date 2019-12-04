@@ -1,31 +1,32 @@
-package sen.school.primaire.matiere;
+package sen.school.primaire.matricule;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import sen.school.primaire.anneescolaire.ClasseAnnee;
+import sen.school.primaire.eleve.Eleve;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table(name = "matiere")
+@Table(name = "matricule")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Matiere {
+public class Matricule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idMatiere")
-    private int idMatiere;
+    @Column(name = "idMatricule")
+    private int idMatricule;
 
-    @Column(name = "name",nullable = false)
-    private String name;
+    @Column(name = "value",nullable = false)
+    private String value;
 
-    @ManyToMany(mappedBy = "sontAuProgramme")
-    private Set<ClasseAnnee> classeAnnees = new HashSet<>();
+    @ManyToMany(mappedBy = "estIdentifie")
+    private Set<Eleve> eleve = new HashSet<>();
 }
