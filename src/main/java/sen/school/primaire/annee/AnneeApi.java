@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +19,9 @@ public class AnneeApi {
 
     @ApiOperation("Find annee by id")
     @RequestMapping(value = "/annee/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Annee>> findById(
-            @PathVariable(value = "id") Integer id) {
+    public ResponseEntity<Optional<Annee>> findById(@PathVariable(value = "id") Integer id) {
+        log.info("Find Annee with id  [{}]" + id);
+
         if (id == null){
             return new ResponseEntity<>(
                     anneeRepositoryService.findById(id),
@@ -35,21 +35,17 @@ public class AnneeApi {
 
     @ApiOperation("Find all annee")
     @RequestMapping(value = "/annees", method = RequestMethod.GET)
-    public ResponseEntity<List<Annee>> findAll(
-    ) {
+    public ResponseEntity<List<Annee>> findAll() {
+        log.info(" Find all annee ");
         return new ResponseEntity<>(
                 anneeRepositoryService.findAll(),
                 HttpStatus.OK);
-
     }
 
     @ApiOperation("create annee")
     @RequestMapping(value = "/annee", method = RequestMethod.POST)
-    public ResponseEntity<Annee> save(@RequestParam(value = "value") String value) {
-        Annee annee = new Annee();
-        if (!StringUtils.isEmpty(value)){
-            annee.setValue(value);
-        }
+    public ResponseEntity<Annee> save(@RequestBody Annee annee) {
+        log.info("Create Annee [{}]" + annee);
         return new ResponseEntity<>(
                 anneeRepositoryService.save(annee),
                 HttpStatus.CREATED);

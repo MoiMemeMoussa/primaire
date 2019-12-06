@@ -1,5 +1,6 @@
 package sen.school.primaire.annee;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Annee {
     private String value;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "classe_annee",
             joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
             inverseJoinColumns = @JoinColumn(name = "idClasse", referencedColumnName = "idClasse"))

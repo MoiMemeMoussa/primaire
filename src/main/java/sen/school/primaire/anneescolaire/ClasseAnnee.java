@@ -1,5 +1,6 @@
 package sen.school.primaire.anneescolaire;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import sen.school.primaire.eleve.Eleve;
 import sen.school.primaire.enseignant.Enseignant;
@@ -23,6 +24,7 @@ public class ClasseAnnee {
 
     //Relations entre classe et eleve
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "classe_eleve",
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
             inverseJoinColumns = @JoinColumn(name = "idEleve", referencedColumnName = "idEleve"))

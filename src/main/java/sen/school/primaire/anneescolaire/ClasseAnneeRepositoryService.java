@@ -19,8 +19,9 @@ public class ClasseAnneeRepositoryService {
         return classeAnneeRepository.save(classeAnnee);
     }
 
-    List<Classe> findAllClasseOpenedByYear(int idAnnee) {
-        return classeAnneeRepository.findAllClasseOpenedByYear(idAnnee);
+
+    List<Classe> findAllClasseLinkedToAYear(int idAnnee) {
+        return classeAnneeRepository.findAllClasseLinkedToAYear(idAnnee);
     }
 
 }

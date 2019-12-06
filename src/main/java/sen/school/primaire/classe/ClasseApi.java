@@ -52,7 +52,7 @@ public class ClasseApi {
     @ApiOperation(value = "Delete classe")
     @RequestMapping(value = "/classe/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteClasse(@PathVariable(value = "id") Integer id) {
-        log.info("Delete annee with id = [{}]", id);
+        log.info("Delete classe with id = [{}]", id);
         Optional<Classe> classe = classeRepositoryService.findById(id);
         if (classe == null){
             return new ResponseEntity("There is no classe with ID " + id,

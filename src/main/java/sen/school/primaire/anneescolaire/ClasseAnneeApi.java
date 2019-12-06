@@ -3,13 +3,9 @@ package sen.school.primaire.anneescolaire;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sen.school.primaire.classe.Classe;
 
 import java.util.List;
@@ -33,10 +29,10 @@ public class ClasseAnneeApi {
 
     @ApiOperation(" Find all class opened in a school year")
     @RequestMapping(value = "/classeannee/{idAnnee}", method = RequestMethod.GET)
-    public ResponseEntity<List<Classe>> openClass(@Param("idAnnee") int idAnnee) {
+    public ResponseEntity<List<Classe>> findAllClasseLinkedToAYear(@PathVariable(value = "idAnnee") Integer idAnnee) {
 
         return new ResponseEntity<>(
-                classeAnneeRepositoryService.findAllClasseOpenedByYear(idAnnee),
+                classeAnneeRepositoryService.findAllClasseLinkedToAYear(idAnnee),
                 HttpStatus.CREATED);
 
     }
