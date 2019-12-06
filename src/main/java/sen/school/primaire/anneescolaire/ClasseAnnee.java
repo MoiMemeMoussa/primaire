@@ -1,16 +1,11 @@
 package sen.school.primaire.anneescolaire;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import sen.school.primaire.classe.Classe;
+import lombok.*;
 import sen.school.primaire.eleve.Eleve;
 import sen.school.primaire.enseignant.Enseignant;
 import sen.school.primaire.matiere.Matiere;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 @Table(name = "classe_annee")
@@ -19,15 +14,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClasseAnnee implements Serializable {
+@EqualsAndHashCode
+public class ClasseAnnee {
 
-    @Id
-    @Column(name = "idClasse")
-    private int idclasse;
-
-    @Id
-    @Column(name = "idAnnee")
-    private int idAnnee;
+    @EmbeddedId
+    ClasseAnneeKey classeAnneeKey;
 
 
     //Relations entre classe et eleve
