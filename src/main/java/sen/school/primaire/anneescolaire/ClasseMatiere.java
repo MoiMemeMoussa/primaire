@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sen.school.primaire.annee.Annee;
 import sen.school.primaire.eleve.Eleve;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,19 +16,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClasseMatiere implements Serializable {
+public class ClasseMatiere {
 
-    @Id
-    @Column(name = "idAnnee")
-    private int idAnnee;
-
-    @Id
-    @Column(name = "idClasse")
-    private int idclasse;
-
-    @Id
-    @Column(name = "idMatiere")
-    private int idMatiere;
+    @EmbeddedId
+    ClasseMatiereKey classeMatiereKey;
 
     @Column(name = "bareme")
     private int bareme;
