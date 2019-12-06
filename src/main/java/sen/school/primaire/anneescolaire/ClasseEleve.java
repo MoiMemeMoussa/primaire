@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sen.school.primaire.matiere.Matiere;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Table(name = "classe_eleve")
 @Entity
@@ -16,22 +16,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClasseEleve implements Serializable {
-    @Id
-    @Column(name = "idAnnee")
-    private String idAnnee;
+public class ClasseEleve {
 
-    @Id
-    @Column(name = "idClasse")
-    private int idclasse;
-
-    @Id
-    @Column(name = "idEleve")
-    private int idEleve;
-
-    @Column(name="status")
+    @EmbeddedId
+    ClasseEleveKey classeEleveKey;
+    @Column(name = "status")
     private String status;
-
-
 
 }
