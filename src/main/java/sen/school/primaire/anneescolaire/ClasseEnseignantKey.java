@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class ClasseEnseignantKey implements Serializable {
 
     @Column(name = "idAnnee")
-    private String idAnnee;
+    private int idAnnee;
 
     @Column(name = "idClasse")
     private int idClasse;

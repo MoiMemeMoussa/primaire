@@ -29,11 +29,12 @@ public class Enseignant {
     @Column(name = "lastName",nullable = false)
     private String lastName;
 
-    @Column(name = "gender",nullable = false)
-    private char gender;
+    // Monsieur, Madamoiselle, Madame( M. ou MLLE ou MME)
+    @Column(name = "title", nullable = false)
+    private String title;
 
     @Column(name = "phone",nullable = false)
-    private char phone;
+    private int phone;
 
     @ManyToMany(mappedBy = "sontEnseignant")
     @JsonIgnore

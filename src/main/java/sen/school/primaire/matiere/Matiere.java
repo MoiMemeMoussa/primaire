@@ -1,5 +1,6 @@
 package sen.school.primaire.matiere;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class Matiere {
     private String name;
 
     @ManyToMany(mappedBy = "sontAuProgramme")
+    @JsonIgnore
     private Set<ClasseAnnee> classeAnnees = new HashSet<>();
 }

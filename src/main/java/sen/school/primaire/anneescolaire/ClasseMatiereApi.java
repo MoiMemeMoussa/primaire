@@ -3,13 +3,9 @@ package sen.school.primaire.anneescolaire;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sen.school.primaire.matiere.Matiere;
 
 import java.util.List;
@@ -31,9 +27,10 @@ public class ClasseMatiereApi {
 
     }
 
-    @ApiOperation(" find liste matiere  of a classe in a year ")
-    @RequestMapping(value = "/classematiere/{idAnnee}/{idClasse}", method = RequestMethod.GET)
-    public ResponseEntity<List<Matiere>> findEnseignantofClass(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
+    @ApiOperation(" find list subjet  of a classe in a year ")
+    @RequestMapping(value = "/classes/{idClasse}/annees/{idAnnee}/matieres", method = RequestMethod.GET)
+    public ResponseEntity<List<Matiere>> findEnseignantofClass(@PathVariable("idAnnee") int idAnnee,
+                                                               @PathVariable("idClasse") int idClasse) {
 
         return new ResponseEntity<>(
                 classeMatiereRepositoryService.findListeMatiereByIdClasseAndAnnee(idAnnee, idClasse),

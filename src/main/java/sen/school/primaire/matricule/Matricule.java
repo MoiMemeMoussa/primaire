@@ -1,10 +1,10 @@
 package sen.school.primaire.matricule;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sen.school.primaire.anneescolaire.ClasseAnnee;
 import sen.school.primaire.eleve.Eleve;
 
 import javax.persistence.*;
@@ -28,5 +28,6 @@ public class Matricule {
     private String value;
 
     @ManyToMany(mappedBy = "estIdentifie")
+    @JsonIgnore
     private Set<Eleve> eleve = new HashSet<>();
 }

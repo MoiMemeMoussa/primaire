@@ -28,7 +28,7 @@ public class ClasseAnneeApi {
     }
 
     @ApiOperation(" Find all class opened in a school year")
-    @RequestMapping(value = "/classeannee/{idAnnee}", method = RequestMethod.GET)
+    @RequestMapping(value = "/annees/{idAnnee}/classes", method = RequestMethod.GET)
     public ResponseEntity<List<Classe>> findAllClasseLinkedToAYear(@PathVariable(value = "idAnnee") Integer idAnnee) {
 
         return new ResponseEntity<>(
