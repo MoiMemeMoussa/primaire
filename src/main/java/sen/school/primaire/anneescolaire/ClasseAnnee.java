@@ -20,8 +20,6 @@ public class ClasseAnnee {
 
     @EmbeddedId
     ClasseAnneeKey classeAnneeKey;
-
-
     //Relations entre classe et eleve
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
@@ -30,7 +28,6 @@ public class ClasseAnnee {
             inverseJoinColumns = @JoinColumn(name = "idEleve", referencedColumnName = "idEleve"))
     private Set<Eleve> elevesInscrit;
 
-
     //Relation entre classe et enseignant
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
@@ -38,7 +35,6 @@ public class ClasseAnnee {
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
             inverseJoinColumns = @JoinColumn(name = "matricule", referencedColumnName = "matricule"))
     private Set<Enseignant> sontEnseignant;
-
 
     //Relation entre classe et matiere
     @ManyToMany(cascade = CascadeType.ALL)

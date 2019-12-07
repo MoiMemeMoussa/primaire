@@ -20,9 +20,8 @@ import java.util.Set;
 public class Enseignant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "matricule")
-    private int matricule;
+    private String matricule;
 
     @Column(name = "firstName",nullable = false)
     private String firstName;
