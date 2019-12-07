@@ -1,13 +1,12 @@
 package sen.school.primaire.eleve;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sen.school.primaire.annee.Annee;
 import sen.school.primaire.anneescolaire.ClasseAnnee;
 import sen.school.primaire.anneescolaire.ClasseMatiere;
-import sen.school.primaire.matiere.Matiere;
 import sen.school.primaire.matricule.Matricule;
 
 import javax.persistence.*;
@@ -47,14 +46,16 @@ public class Eleve {
     private Date birthDate;
 
     @Column(name = "place", nullable = false)
-    private Date place;
+    private String place;
 
     //Relation entre eleve et classe
     @ManyToMany(mappedBy = "elevesInscrit")
+    @JsonIgnore
     private Set<ClasseAnnee> classeAnnees = new HashSet<>();
 
     //Relation entre eleve et matricule
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "eleve_matricule",
             joinColumns = @JoinColumn(name = "idEleve"),
             inverseJoinColumns = @JoinColumn(name = "idMatricule", referencedColumnName = "idMatricule"))
@@ -62,6 +63,7 @@ public class Eleve {
 
     //Relation entre eleve et classe_matiere
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "notes",
             joinColumns = {@JoinColumn(name = "idEleve")},
             inverseJoinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse"),@JoinColumn(name = "idMatiere")})

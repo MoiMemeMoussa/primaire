@@ -33,6 +33,7 @@ public class ClasseAnnee {
 
     //Relation entre classe et enseignant
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "classe_enseignant",
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
             inverseJoinColumns = @JoinColumn(name = "matricule", referencedColumnName = "matricule"))
@@ -41,6 +42,7 @@ public class ClasseAnnee {
 
     //Relation entre classe et matiere
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "classe_matiere",
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
             inverseJoinColumns = @JoinColumn(name = "idMatiere", referencedColumnName = "idMatiere"))

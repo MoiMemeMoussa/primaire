@@ -1,5 +1,6 @@
 package sen.school.primaire.enseignant;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +37,6 @@ public class Enseignant {
     private char phone;
 
     @ManyToMany(mappedBy = "sontEnseignant")
+    @JsonIgnore
     private Set<ClasseAnnee> classeAnnees = new HashSet<>();
 }
