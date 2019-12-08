@@ -7,6 +7,6 @@ import sen.school.primaire.enseignant.Enseignant;
 
 public interface ClasseEnseignantRepository extends JpaRepository<ClasseEnseignant, ClasseEnseignantKey> {
 
-    @Query("from ClasseEnseignant CE where CE.classeEnseignantKey.idAnnee = :idAnnee AND CE.classeEnseignantKey.idClasse=:idClasse ")
+    @Query("from Enseignant E, ClasseEnseignant CE where CE.classeEnseignantKey.idAnnee = :idAnnee AND CE.classeEnseignantKey.idClasse=:idClasse AND CE.classeEnseignantKey.matricule=E.matricule ")
     Enseignant findEnseignantByIdClasse(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse);
 }

@@ -20,7 +20,7 @@ public class MatriculeApi {
 
 
     @ApiOperation(" create Matricule")
-    @RequestMapping(value = "/Matricules", method = RequestMethod.POST)
+    @RequestMapping(value = "/matricules", method = RequestMethod.POST)
     public ResponseEntity<Matricule> save(@RequestBody Matricule Matricule) {
         log.info("Create Matricule [{}]" + Matricule);
         MatriculeRepositoryService.save(Matricule);
@@ -28,16 +28,16 @@ public class MatriculeApi {
 
     }
 
-    @ApiOperation(value = "Retrieve all Matricules")
-    @RequestMapping(value = "/Matricules", method = RequestMethod.GET)
+    @ApiOperation(value = "Retrieve all matricules")
+    @RequestMapping(value = "/matricules", method = RequestMethod.GET)
     public List<Matricule> findAll() {
-        log.info("Find all Matricules");
+        log.info("Find all matricules");
         return MatriculeRepositoryService.findAll();
     }
 
 
     @ApiOperation(" find Matricule by id")
-    @RequestMapping(value = "/Matricules/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/matricules/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Matricule>> find(@PathVariable(value = "id") Integer id) {
         Optional<Matricule> Matricule = MatriculeRepositoryService.findById(id);
         if (StringUtils.isEmpty(Matricule)){
@@ -48,7 +48,7 @@ public class MatriculeApi {
     }
 
     @ApiOperation(value = "Delete a Matricule")
-    @RequestMapping(value = "/Matricules/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/matricules/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteMatricule(@PathVariable(value = "id") Integer id) {
         log.info("Delete Matricule with id = [{}]", id);
         Optional<Matricule> Matricule = MatriculeRepositoryService.findById(id);

@@ -9,7 +9,6 @@ import java.util.List;
 public interface ClasseAnneeRepository extends JpaRepository<ClasseAnnee, ClasseAnneeKey> {
 
 
-    //@Query(" from Annee A,ClasseAnnee CA, Classe C where A.idAnnee=:idAnnee AND A.idAnnee=CA.classeAnneeKey.idAnnee AND CA.classeAnneeKey.idClasse = C.idClasse")
     @Query(value = "select C from Classe C, ClasseAnnee CA, Annee A WHERE A.idAnnee =:idAnnee AND A.idAnnee=CA.classeAnneeKey.idAnnee AND C.idClasse=CA.classeAnneeKey.idClasse")
     List<Classe> findAllClasseLinkedToAYear(int idAnnee);
 }
