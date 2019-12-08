@@ -34,7 +34,7 @@ public class Eleve {
     private String lastName;
 
     @Column(name = "gender", nullable = false)
-    private char gender;
+    private String gender;
 
     @Column(name = "father", nullable = false)
     private String father;

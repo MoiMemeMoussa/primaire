@@ -18,30 +18,21 @@ public class ClasseEleveRepositoryService {
         return classeEleveRepository.save(classeEleve);
     }
 
-    List<Eleve> findListeELeveByIdClasseAndAnnee(int idClasse, int idAnnee) {
+    List<Eleve> findListeELeveByIdClasseAndAnnee(int idAnnee, int idClasse) {
         return classeEleveRepository.findListeELeveByIdClasseAndAnnee(idClasse, idAnnee);
     }
 
-    ClasseEleve findELeveByIdClasseAndAnnee(int idClasse, int idAnnee, int idEleve) {
-        return classeEleveRepository.findELeveByIdClasseAndAnnee(idClasse, idAnnee, idEleve);
+    ClasseEleve findELeveByIdClasseAndAnnee(int idAnnee, int idClasse, int idEleve) {
+        return classeEleveRepository.findEleveByClasse(idAnnee, idClasse, idEleve);
     }
 
-    List<Eleve> findListeELevePassantsByIdClasseAndAnnee(int idClasse, int idAnnee) {
-        return classeEleveRepository.findListeELevePassantsByIdClasseAndAnnee(idClasse, idAnnee);
+    List<Eleve> findBoys(int idAnnee, int idClasse) {
+        return classeEleveRepository.findAllBoys(idAnnee, idClasse);
     }
 
-    List<Eleve> findListeELeveRedoublantsByIdClasseAndAnnee(int idClasse, int idAnnee) {
-        return classeEleveRepository.findListeELeveRedoublantsByIdClasseAndAnnee(idClasse, idAnnee);
+    List<Eleve> findGirls(int idAnnee, int idClasse) {
+        return classeEleveRepository.findAllGilrs(idAnnee, idClasse);
     }
-
-    List<Eleve> findListeELeveWithGenderEqualsToM(int idClasse, int idAnnee) {
-        return classeEleveRepository.findListeELeveWithGenderEqualsToM(idClasse, idAnnee);
-    }
-
-    List<Eleve> findListeELeveWithGenderEqualsToF(int idClasse, int idAnnee) {
-        return classeEleveRepository.findListeELeveWithGenderEqualsToF(idClasse, idAnnee);
-    }
-
     void deleteEleveFromClasse(ClasseEleve classeEleve) {
         classeEleveRepository.delete(classeEleve);
     }

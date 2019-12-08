@@ -3,7 +3,6 @@ package sen.school.primaire.anneescolaire;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,45 +28,10 @@ public class ClasseEleveApi {
 
     @ApiOperation(" find liste eleves  of a classe in a year ")
     @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> findListeELeveByIdClasseAndAnnee(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
+    public ResponseEntity<List<Eleve>> findListeELeveByIdClasseAndAnnee(@PathVariable("idAnnee") int idAnnee, @PathVariable("idClasse") int idClasse) {
 
         return new ResponseEntity<>(
                 classeEleveRepositoryService.findListeELeveByIdClasseAndAnnee(idAnnee, idClasse),
-                HttpStatus.CREATED);
-    }
-
-    @ApiOperation(" find liste eleves  of a classe with status P in a year ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}?status=P", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> findListeELevePassantsByIdClasseAndAnnee(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
-        return new ResponseEntity<>(
-                classeEleveRepositoryService.findListeELevePassantsByIdClasseAndAnnee(idAnnee, idClasse),
-                HttpStatus.CREATED);
-    }
-
-    @ApiOperation(" find liste eleves  of a classe with status R in a year ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}?status=R", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> findListeELeveRedoublantsByIdClasseAndAnnee(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
-
-        return new ResponseEntity<>(
-                classeEleveRepositoryService.findListeELeveRedoublantsByIdClasseAndAnnee(idAnnee, idClasse),
-                HttpStatus.CREATED);
-    }
-
-    @ApiOperation(" find liste eleves  class with gender equals to M  ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}?gender=M", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> findListeELeveWithGenderEqualsToM(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
-
-        return new ResponseEntity<>(
-                classeEleveRepositoryService.findListeELeveWithGenderEqualsToM(idAnnee, idClasse),
-                HttpStatus.CREATED);
-    }
-
-    @ApiOperation(" find liste eleves  class with gender equals to M  ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}?gender=F", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> findListeELeveWithGenderEqualsToF(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse) {
-
-        return new ResponseEntity<>(
-                classeEleveRepositoryService.findListeELeveWithGenderEqualsToF(idAnnee, idClasse),
                 HttpStatus.CREATED);
     }
 
@@ -78,6 +42,20 @@ public class ClasseEleveApi {
         classeEleveRepositoryService.deleteEleveFromClasse(classeEleve);
         return new ResponseEntity(classeEleve, HttpStatus.OK);
 
+    }
+
+    @ApiOperation(" Find all boys in one class, in one school year")
+    @RequestMapping(value = "/classes/{idClasse}/annees/{idAnnee}/garcons", method = RequestMethod.GET)
+    public ResponseEntity<List<Eleve>> findBoys(@PathVariable("idAnnee") int idAnnee,
+                                                @PathVariable("idClasse") int idClasse) {
+        return new ResponseEntity(classeEleveRepositoryService.findBoys(idAnnee, idClasse), HttpStatus.OK);
+    }
+
+    @ApiOperation(" Find all girls in one class, in one school year")
+    @RequestMapping(value = "/classes/{idClasse}/annees/{idAnnee}/filles", method = RequestMethod.GET)
+    public ResponseEntity<List<Eleve>> findGirls(@PathVariable("idAnnee") int idAnnee,
+                                                 @PathVariable("idClasse") int idClasse) {
+        return new ResponseEntity(classeEleveRepositoryService.findGirls(idAnnee, idClasse), HttpStatus.OK);
     }
 
 }
