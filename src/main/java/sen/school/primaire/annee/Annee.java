@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import sen.school.primaire.classe.Classe;
+import sen.school.primaire.trimestre.Trimestre;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -32,4 +33,12 @@ public class Annee {
             joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
             inverseJoinColumns = @JoinColumn(name = "idClasse", referencedColumnName = "idClasse"))
     private Set<Classe> existeClasse;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinTable(name = "annee_trimestre",
+            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
+            inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
+    private Set<Trimestre> calendrier;
 }

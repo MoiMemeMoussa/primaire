@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sen.school.primaire.eleve.Eleve;
 
 import java.util.List;
@@ -76,7 +73,7 @@ public class ClasseEleveApi {
 
     @ApiOperation(" delete eleve from class ")
     @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}/{idEleve}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteEleveFromClasse(@Param("idAnnee") int idAnnee, @Param("idClasse") int idClasse, @Param("idClasse") int idEleve) {
+    public ResponseEntity deleteEleveFromClasse(@PathVariable("idAnnee") int idAnnee, @PathVariable("idClasse") int idClasse, @PathVariable("idClasse") int idEleve) {
         ClasseEleve classeEleve = classeEleveRepositoryService.findELeveByIdClasseAndAnnee(idClasse, idAnnee, idEleve);
         classeEleveRepositoryService.deleteEleveFromClasse(classeEleve);
         return new ResponseEntity(classeEleve, HttpStatus.OK);
