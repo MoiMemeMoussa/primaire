@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 05 déc. 2019 à 11:25
+-- Généré le :  lun. 09 déc. 2019 à 11:46
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -33,6 +33,28 @@ CREATE TABLE `annee` (
   `value` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `annee`
+--
+
+INSERT INTO `annee` (`idAnnee`, `value`) VALUES
+(1, '2017-2018'),
+(2, '2018-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annee_trimestre`
+--
+
+CREATE TABLE `annee_trimestre` (
+  `idAnnee` int(11) NOT NULL,
+  `idTrimestre` int(11) NOT NULL,
+  `endDate` date DEFAULT NULL,
+  `startDate` date DEFAULT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -43,6 +65,19 @@ CREATE TABLE `classe` (
   `idClasse` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `classe`
+--
+
+INSERT INTO `classe` (`idClasse`, `name`) VALUES
+(1, 'CI'),
+(2, 'CP'),
+(3, 'CE1'),
+(4, 'CE2'),
+(5, 'CM1'),
+(6, 'CM2'),
+(7, '6ieme');
 
 -- --------------------------------------------------------
 
@@ -55,6 +90,20 @@ CREATE TABLE `classe_annee` (
   `idAnnee` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `classe_annee`
+--
+
+INSERT INTO `classe_annee` (`idClasse`, `idAnnee`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(1, 2),
+(2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -64,9 +113,18 @@ CREATE TABLE `classe_annee` (
 CREATE TABLE `classe_eleve` (
   `idClasse` int(11) NOT NULL,
   `idEleve` int(11) NOT NULL,
-  `idAnnee` varchar(255) NOT NULL,
+  `idAnnee` int(11) NOT NULL,
   `status` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `classe_eleve`
+--
+
+INSERT INTO `classe_eleve` (`idClasse`, `idEleve`, `idAnnee`, `status`) VALUES
+(1, 22, 1, 'P'),
+(1, 21, 1, 'P'),
+(6, 23, 1, 'P');
 
 -- --------------------------------------------------------
 
@@ -82,6 +140,14 @@ CREATE TABLE `classe_enseignant` (
   `startDate` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `classe_enseignant`
+--
+
+INSERT INTO `classe_enseignant` (`matricule`, `idClasse`, `idAnnee`, `endDate`, `startDate`) VALUES
+('2001-A001', 1, '1', '2018-07-31', '2018-10-03'),
+('2015-A003', 6, '2', '2018-07-31', '2018-10-03');
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +161,15 @@ CREATE TABLE `classe_matiere` (
   `bareme` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `classe_matiere`
+--
+
+INSERT INTO `classe_matiere` (`idClasse`, `idMatiere`, `idAnnee`, `bareme`) VALUES
+(1, 4, 1, 20),
+(1, 5, 1, 30),
+(1, 6, 1, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -106,11 +181,20 @@ CREATE TABLE `eleve` (
   `birthDate` date NOT NULL,
   `father` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
-  `gender` char(1) NOT NULL,
+  `gender` varchar(6) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `mother` varchar(255) NOT NULL,
-  `place` date NOT NULL
+  `place` varchar(40) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `eleve`
+--
+
+INSERT INTO `eleve` (`idEleve`, `birthDate`, `father`, `firstName`, `gender`, `lastName`, `mother`, `place`) VALUES
+(21, '2012-11-23', 'Moussa FALL', 'Papa Ibrahima', 'M', 'FALL', 'NDEYE FATIME DIOUF', 'DAKAR'),
+(22, '2012-11-23', 'Mame Thierno DIOUM', 'Aminata', 'F', 'DIOUM', 'NDEYE FATOU', 'DAKAR'),
+(23, '1990-12-03', 'Boubabacar FALL', 'Anta', 'F', 'FALL', 'AMY FALL', 'PIKINE');
 
 -- --------------------------------------------------------
 
@@ -132,12 +216,22 @@ CREATE TABLE `eleve_matricule` (
 --
 
 CREATE TABLE `enseignant` (
-  `matricule` int(11) NOT NULL,
+  `matricule` varchar(11) NOT NULL,
   `firstName` varchar(255) NOT NULL,
-  `gender` char(1) NOT NULL,
+  `title` varchar(10) NOT NULL COMMENT 'M. ou MLLE ou MME',
   `lastName` varchar(255) NOT NULL,
-  `phone` char(1) NOT NULL
+  `phone` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `enseignant`
+--
+
+INSERT INTO `enseignant` (`matricule`, `firstName`, `title`, `lastName`, `phone`) VALUES
+('2001-A001', 'Assane', 'M.', 'FALL', 778016349),
+('2010-A002', 'Fatou', 'MLLE', 'MARONE', 774102010),
+('2015-A003', 'Sidi Yahya', 'M.', 'NDIAYE', 775261725),
+('2015-A004', 'Mame DIBOR', 'MLLE', 'DIOUF', 771589585);
 
 -- --------------------------------------------------------
 
@@ -154,12 +248,12 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(1),
-(1),
-(1),
-(1),
-(1),
-(1);
+(24),
+(24),
+(24),
+(24),
+(24),
+(24);
 
 -- --------------------------------------------------------
 
@@ -172,6 +266,16 @@ CREATE TABLE `matiere` (
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `matiere`
+--
+
+INSERT INTO `matiere` (`idMatiere`, `name`) VALUES
+(4, 'Redaction'),
+(5, 'Resolution de problemes'),
+(6, 'Production d\'écrits'),
+(7, 'Fluidité');
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +286,17 @@ CREATE TABLE `matricule` (
   `idMatricule` int(11) NOT NULL,
   `value` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `matricule`
+--
+
+INSERT INTO `matricule` (`idMatricule`, `value`) VALUES
+(9, '001-001'),
+(10, '001-002'),
+(11, '001-003'),
+(12, '001-004'),
+(13, '001-005');
 
 -- --------------------------------------------------------
 
@@ -209,6 +324,15 @@ CREATE TABLE `trimestre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Déchargement des données de la table `trimestre`
+--
+
+INSERT INTO `trimestre` (`id`, `value`) VALUES
+(18, 'Trimestre1'),
+(19, 'Trimestre2'),
+(20, 'Trimestre3');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -217,6 +341,14 @@ CREATE TABLE `trimestre` (
 --
 ALTER TABLE `annee`
   ADD PRIMARY KEY (`idAnnee`);
+
+--
+-- Index pour la table `annee_trimestre`
+--
+ALTER TABLE `annee_trimestre`
+  ADD PRIMARY KEY (`idAnnee`,`idTrimestre`),
+  ADD KEY `FK7b8f509f4q0exf1l6vmub26le` (`idTrimestre`),
+  ADD KEY `FKc4pxhylxw0acra81nhjrwqjjf` (`id`);
 
 --
 -- Index pour la table `classe`
@@ -295,6 +427,16 @@ ALTER TABLE `notes`
 --
 ALTER TABLE `trimestre`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `eleve`
+--
+ALTER TABLE `eleve`
+  MODIFY `idEleve` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
