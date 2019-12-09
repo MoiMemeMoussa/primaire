@@ -11,5 +11,11 @@ Dans chaque classe, il est essentielle de connaitre:
 - la liste des passants
 - la liste des redoublants
 - le bulletin de notes de chaque élève
+- l' enseignant de la classe
+- l'enseignant de la classe pour une période donnée
 
 Le bulletin de notes à générer est dans le dossier "bulletin".
+
+#adresse swagger pour les API Rest
+http://localhost:8080/swagger-ui.html
+
