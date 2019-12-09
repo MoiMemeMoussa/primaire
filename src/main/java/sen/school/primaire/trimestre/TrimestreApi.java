@@ -55,7 +55,7 @@ public class TrimestreApi {
 
 
     @ApiOperation("create trimestre")
-    @RequestMapping(value = "/trimestre", method = RequestMethod.POST)
+    @RequestMapping(value = "/trimestres", method = RequestMethod.POST)
     public ResponseEntity<Trimestre> save(@RequestBody Trimestre trimestre) {
 
         return new ResponseEntity<>(

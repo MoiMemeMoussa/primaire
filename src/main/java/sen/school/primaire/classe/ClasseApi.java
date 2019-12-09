@@ -18,7 +18,7 @@ public class ClasseApi {
     ClasseRepositoryService classeRepositoryService;
 
     @ApiOperation("create classe")
-    @RequestMapping(value = "/classe", method = RequestMethod.POST)
+    @RequestMapping(value = "/classes", method = RequestMethod.POST)
     public ResponseEntity<Classe> save(@RequestBody Classe classe) {
         log.info("Create Classe [{}]" + classe);
         classeRepositoryService.save(classe);
@@ -50,7 +50,7 @@ public class ClasseApi {
     }
 
     @ApiOperation(value = "Delete classe")
-    @RequestMapping(value = "/classe/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/classes/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteClasse(@PathVariable(value = "id") Integer id) {
         log.info("Delete classe with id = [{}]", id);
         Optional<Classe> classe = classeRepositoryService.findById(id);

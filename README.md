@@ -15,7 +15,6 @@ Dans chaque classe, il est essentielle de connaitre:
 - l'enseignant de la classe pour une période donnée
 
 Le bulletin de notes à générer est dans le dossier "bulletin".
-
 #adresse swagger pour les API Rest
 http://localhost:8080/swagger-ui.html
 

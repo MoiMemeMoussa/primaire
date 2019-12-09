@@ -53,7 +53,7 @@ public class EleveApi {
 
 
     @ApiOperation("create eleve")
-    @RequestMapping(value = "/eleve", method = RequestMethod.POST)
+    @RequestMapping(value = "/eleves", method = RequestMethod.POST)
     public ResponseEntity<Eleve> save(@RequestBody Eleve eleve) {
 
         return new ResponseEntity<>(
