@@ -18,7 +18,7 @@ public class AnneeApi {
     AnneeRepositoryService anneeRepositoryService;
 
     @ApiOperation("Find annee by id")
-    @RequestMapping(value = "/annee/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/annees/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Annee>> findById(@PathVariable(value = "id") Integer id) {
         log.info("Find Annee with id  [{}]" + id);
 
@@ -43,7 +43,7 @@ public class AnneeApi {
     }
 
     @ApiOperation("create annee")
-    @RequestMapping(value = "/annee", method = RequestMethod.POST)
+    @RequestMapping(value = "/annees", method = RequestMethod.POST)
     public ResponseEntity<Annee> save(@RequestBody Annee annee) {
         log.info("Create Annee [{}]" + annee);
         return new ResponseEntity<>(
@@ -53,7 +53,7 @@ public class AnneeApi {
     }
 
     @ApiOperation(value = "Delete annee")
-    @RequestMapping(value = "/annee/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/annees/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteAnnee(@PathVariable(value = "id") Integer id) {
         log.info("Delete annee with id = [{}]", id);
         Optional<Annee> annee = anneeRepositoryService.findById(id);

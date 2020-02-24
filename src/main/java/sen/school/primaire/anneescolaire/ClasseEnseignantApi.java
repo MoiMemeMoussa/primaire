@@ -16,7 +16,7 @@ public class ClasseEnseignantApi {
     ClasseEnseignantRepositoryService classeEnseignantRepositoryService;
 
     @ApiOperation("affect class to teacher")
-    @RequestMapping(value = "/classeenseignant", method = RequestMethod.POST)
+    @RequestMapping(value = "/classesenseignants", method = RequestMethod.POST)
     public ResponseEntity<ClasseEnseignant> openClass(@RequestBody ClasseEnseignant classeEnseignant) {
 
         return new ResponseEntity<>(

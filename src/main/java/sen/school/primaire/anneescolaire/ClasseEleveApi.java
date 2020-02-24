@@ -18,7 +18,7 @@ public class ClasseEleveApi {
     ClasseEleveRepositoryService classeEleveRepositoryService;
 
     @ApiOperation("add eleve to classe")
-    @RequestMapping(value = "/classeeleve", method = RequestMethod.POST)
+    @RequestMapping(value = "/classeseleves", method = RequestMethod.POST)
     public ResponseEntity<ClasseEleve> insertEleveToClass(@RequestBody ClasseEleve classeEleve) {
 
         return new ResponseEntity<>(
@@ -27,7 +27,7 @@ public class ClasseEleveApi {
     }
 
     @ApiOperation(" find liste eleves  of a classe in a year ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}", method = RequestMethod.GET)
+    @RequestMapping(value = "/classeseleves/{idAnnee}/{idClasse}", method = RequestMethod.GET)
     public ResponseEntity<List<Eleve>> findListeELeveByIdClasseAndAnnee(@PathVariable("idAnnee") int idAnnee, @PathVariable("idClasse") int idClasse) {
 
         return new ResponseEntity<>(
@@ -36,7 +36,7 @@ public class ClasseEleveApi {
     }
 
     @ApiOperation(" delete eleve from class ")
-    @RequestMapping(value = "/classeeleve/{idAnnee}/{idClasse}/{idEleve}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/classeseleves/{idAnnee}/{idClasse}/{idEleve}", method = RequestMethod.DELETE)
     public ResponseEntity deleteEleveFromClasse(@PathVariable("idAnnee") int idAnnee, @PathVariable("idClasse") int idClasse, @PathVariable("idClasse") int idEleve) {
         ClasseEleve classeEleve = classeEleveRepositoryService.findELeveByIdClasseAndAnnee(idClasse, idAnnee, idEleve);
         classeEleveRepositoryService.deleteEleveFromClasse(classeEleve);

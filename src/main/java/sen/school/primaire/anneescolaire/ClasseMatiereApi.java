@@ -18,7 +18,7 @@ public class ClasseMatiereApi {
     ClasseMatiereRepositoryService classeMatiereRepositoryService;
 
     @ApiOperation("add matiere to classe")
-    @RequestMapping(value = "/classematiere", method = RequestMethod.POST)
+    @RequestMapping(value = "/classesmatieres", method = RequestMethod.POST)
     public ResponseEntity<ClasseMatiere> openClass(@RequestBody ClasseMatiere classeMatiere) {
 
         return new ResponseEntity<>(
