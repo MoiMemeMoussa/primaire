@@ -54,7 +54,7 @@ public class EnseignantApi {
     }
 
     @ApiOperation("create enseignant")
-    @RequestMapping(value = "/enseignant", method = RequestMethod.POST)
+    @RequestMapping(value = "/enseignants", method = RequestMethod.POST)
     public ResponseEntity<Enseignant> save(@RequestBody Enseignant enseignant) {
 
         return new ResponseEntity<>(
