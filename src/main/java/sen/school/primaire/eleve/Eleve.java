@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import sen.school.primaire.anneescolaire.ClasseAnnee;
 import sen.school.primaire.anneescolaire.ClasseMatiere;
+import sen.school.primaire.enums.GenreEnum;
 import sen.school.primaire.matricule.Matricule;
 
 import javax.persistence.*;
@@ -34,7 +35,7 @@ public class Eleve {
     private String lastName;
 
     @Column(name = "gender", nullable = false)
-    private String gender;
+    private GenreEnum gender;
 
     @Column(name = "father", nullable = false)
     private String father;
