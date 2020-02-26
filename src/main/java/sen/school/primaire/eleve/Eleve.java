@@ -23,30 +23,32 @@ import java.util.Set;
 @Setter
 public class Eleve {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idEleve")
     private int idEleve;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstName", nullable = false, length = 20)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "lastName", nullable = false, length = 20)
     private String lastName;
 
-    @Column(name = "gender", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false, length = 8)
     private GenreEnum gender;
 
-    @Column(name = "father", nullable = false)
+    @Column(name = "father", nullable = false, length = 20)
     private String father;
 
-    @Column(name = "mother", nullable = false)
+    @Column(name = "mother", nullable = false, length = 20)
     private String mother;
 
-    @Column(name = "birthDate", nullable = false)
+    @Column(name = "birthDate", nullable = false, length = 20)
     private Date birthDate;
 
-    @Column(name = "place", nullable = false)
+    @Column(name = "place", nullable = false, length = 20)
     private String place;
 
     //Relation entre eleve et classe

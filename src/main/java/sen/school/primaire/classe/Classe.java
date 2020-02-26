@@ -24,7 +24,7 @@ public class Classe {
     @Column(name = "idClasse")
     private int idClasse;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name",nullable = false, length=4)
     private String name;
 
     @ManyToMany(mappedBy = "existeClasse")

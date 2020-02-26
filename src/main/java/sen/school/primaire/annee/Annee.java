@@ -24,7 +24,7 @@ public class Annee {
     @Column(name = "idAnnee")
     private int idAnnee;
 
-    @Column(name = "value")
+    @Column(name = "value", length = 8)
     private String value;
 
     @ManyToMany(cascade = CascadeType.ALL)

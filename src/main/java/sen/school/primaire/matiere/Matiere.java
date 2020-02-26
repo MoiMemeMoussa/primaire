@@ -24,7 +24,7 @@ public class Matiere {
     @Column(name = "idMatiere")
     private int idMatiere;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name",nullable = false, length = 20)
     private String name;
 
     @ManyToMany(mappedBy = "sontAuProgramme")

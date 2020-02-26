@@ -20,7 +20,7 @@ import java.util.Set;
 public class Enseignant {
 
     @Id
-    @Column(name = "matricule")
+    @Column(name = "matricule",length = 10)
     private String matricule;
 
     @Column(name = "firstName",nullable = false)
