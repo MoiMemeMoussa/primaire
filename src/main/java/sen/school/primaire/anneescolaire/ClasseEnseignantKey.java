@@ -14,10 +14,10 @@ import java.io.Serializable;
 @Embeddable
 public class ClasseEnseignantKey implements Serializable {
 
-    @Column(name = "idAnnee", length = 3)
+    @Column(name = "id_annee", length = 3)
     private int idAnnee;
 
-    @Column(name = "idClasse", length = 3)
+    @Column(name = "id_classe", length = 3)
     private int idClasse;
 
     @Column(name = "matricule", length = 10)

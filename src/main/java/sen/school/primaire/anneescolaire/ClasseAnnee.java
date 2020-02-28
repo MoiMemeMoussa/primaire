@@ -25,7 +25,7 @@ public class ClasseAnnee {
     @JsonIgnore
     @JoinTable(name = "classe_eleve",
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
-            inverseJoinColumns = @JoinColumn(name = "idEleve", referencedColumnName = "idEleve"))
+            inverseJoinColumns = @JoinColumn(name = "idEleve", referencedColumnName = "id_eleve"))
     private Set<Eleve> elevesInscrit;
 
     //Relation entre classe et enseignant
@@ -41,6 +41,6 @@ public class ClasseAnnee {
     @JsonIgnore
     @JoinTable(name = "classe_matiere",
             joinColumns = {@JoinColumn(name = "idAnnee"),@JoinColumn(name = "idClasse")},
-            inverseJoinColumns = @JoinColumn(name = "idMatiere", referencedColumnName = "idMatiere"))
+            inverseJoinColumns = @JoinColumn(name = "idMatiere", referencedColumnName = "id_matiere"))
     private Set<Matiere> sontAuProgramme;
 }

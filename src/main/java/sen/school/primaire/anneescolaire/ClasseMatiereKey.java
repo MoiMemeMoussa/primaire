@@ -14,12 +14,12 @@ import java.io.Serializable;
 @Embeddable
 public class ClasseMatiereKey implements Serializable {
 
-    @Column(name = "idAnnee")
+    @Column(name = "id_annee")
     private int idAnnee;
 
-    @Column(name = "idClasse")
+    @Column(name = "id_classe")
     private int idClasse;
 
-    @Column(name = "idMatiere")
+    @Column(name = "id_matiere")
     private int idMatiere;
 }

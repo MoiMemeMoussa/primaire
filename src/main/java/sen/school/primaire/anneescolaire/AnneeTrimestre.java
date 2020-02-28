@@ -20,9 +20,9 @@ public class AnneeTrimestre {
     @EmbeddedId
     AnneeTrimestreKey anneeTrimestreKey;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private Date endDate;
 }

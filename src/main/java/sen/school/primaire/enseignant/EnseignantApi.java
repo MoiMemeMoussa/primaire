@@ -45,8 +45,7 @@ public class EnseignantApi {
 
     @ApiOperation("Find all enseignants")
     @RequestMapping(value = "/enseignants", method = RequestMethod.GET)
-    public ResponseEntity<List<Enseignant>> findAll(
-    ) {
+    public ResponseEntity<List<Enseignant>> findAll() {
         return new ResponseEntity<>(
                 enseignantRepositoryService.findAll(),
                 HttpStatus.OK);

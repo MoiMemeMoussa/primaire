@@ -18,15 +18,15 @@ import java.util.Objects;
 public class EleveMatricule implements Serializable {
 
     @Id
-    @Column(name = "idAnnee")
+    @Column(name = "id_annee")
     private int idAnnee;
 
     @Id
-    @Column(name = "idClasse")
+    @Column(name = "id_classe")
     private int idClasse;
 
     @Id
-    @Column(name = "idEleve")
+    @Column(name = "id_eleve")
     private int idEleve;
 
 

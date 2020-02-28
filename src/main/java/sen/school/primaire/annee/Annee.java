@@ -21,7 +21,7 @@ public class Annee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idAnnee")
+    @Column(name = "id_annee")
     private int idAnnee;
 
     @Column(name = "value", length = 9)
@@ -30,15 +30,15 @@ public class Annee {
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinTable(name = "classe_annee",
-            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
-            inverseJoinColumns = @JoinColumn(name = "idClasse", referencedColumnName = "idClasse"))
+            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "id_annee"),
+            inverseJoinColumns = @JoinColumn(name = "idClasse", referencedColumnName = "id_classe"))
     private Set<Classe> existeClasse;
 
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinTable(name = "annee_trimestre",
-            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "idAnnee"),
+            joinColumns = @JoinColumn(name = "idAnnee", referencedColumnName = "id_annee"),
             inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
     private Set<Trimestre> calendrier;
 }
