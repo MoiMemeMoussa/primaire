@@ -45,7 +45,7 @@ public class Eleve {
     @Column(name = "mother", nullable = false, length = 20)
     private String mother;
 
-    @Column(name = "birth_date", nullable = false, length = 20)
+    @Column(name = "birth_date", nullable = false, length = 10)
     private Date birthDate;
 
     @Column(name = "place", nullable = false, length = 20)
