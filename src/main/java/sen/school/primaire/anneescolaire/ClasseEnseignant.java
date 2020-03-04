@@ -20,9 +20,9 @@ public class ClasseEnseignant {
     @EmbeddedId
     ClasseEnseignantKey classeEnseignantKey;
 
-    @Column(name = "start_date")
+    @Column(name = "startDate")
     private Date startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "endDate")
     private Date endDate;
 }

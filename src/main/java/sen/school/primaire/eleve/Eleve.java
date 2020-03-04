@@ -26,13 +26,13 @@ public class Eleve {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_eleve")
+    @Column(name = "idEleve")
     private int idEleve;
 
-    @Column(name = "first_name", nullable = false, length = 20)
+    @Column(name = "firstName", nullable = false, length = 20)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 20)
+    @Column(name = "lastName", nullable = false, length = 20)
     private String lastName;
 
     @Enumerated(EnumType.STRING)
@@ -45,7 +45,7 @@ public class Eleve {
     @Column(name = "mother", nullable = false, length = 20)
     private String mother;
 
-    @Column(name = "birth_date", nullable = false, length = 10)
+    @Column(name = "birthDate", nullable = false, length = 10)
     private Date birthDate;
 
     @Column(name = "place", nullable = false, length = 20)
@@ -61,7 +61,7 @@ public class Eleve {
     @JsonIgnore
     @JoinTable(name = "eleve_matricule",
             joinColumns = @JoinColumn(name = "idEleve"),
-            inverseJoinColumns = @JoinColumn(name = "idMatricule", referencedColumnName = "id_matricule"))
+            inverseJoinColumns = @JoinColumn(name = "idMatricule", referencedColumnName = "idMatricule"))
     private Set<Matricule> estIdentifie;
 
     //Relation entre eleve et classe_matiere

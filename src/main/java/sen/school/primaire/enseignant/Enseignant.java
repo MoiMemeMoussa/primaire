@@ -23,10 +23,10 @@ public class Enseignant {
     @Column(name = "matricule",length = 10)
     private String matricule;
 
-    @Column(name = "first_ame",nullable = false)
+    @Column(name = "firstName",nullable = false)
     private String firstName;
 
-    @Column(name = "last_name",nullable = false)
+    @Column(name = "lastName",nullable = false)
     private String lastName;
 
     // Monsieur, Madamoiselle, Madame( M. ou MLLE ou MME)

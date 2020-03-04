@@ -12,13 +12,13 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class ClasseEleveKey implements Serializable {
 
-    @Column(name = "id_annee")
+    @Column(name = "idAnnee")
     private int idAnnee;
 
-    @Column(name = "id_classe")
+    @Column(name = "idClasse")
     private int idClasse;
 
-    @Column(name = "id_eleve")
+    @Column(name = "idEleve")
     private int idEleve;
 
 }

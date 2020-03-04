@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class AnneeTrimestreKey implements Serializable {
 
-    @Column(name = "id_annee")
+    @Column(name = "idAnnee")
     private int idAnnee;
 
     @Column(name = "id")

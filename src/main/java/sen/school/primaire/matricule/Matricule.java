@@ -21,7 +21,7 @@ public class Matricule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_matricule")
+    @Column(name = "idMatricule")
     private int idMatricule;
 
     @Column(name = "value",nullable = false)
